@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import titlelogo from '../../../assets/icons/12.png';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const location = useLocation();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error));
+    };
+
     const menuItems =
         <React.Fragment>
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/dashboard'>Dashboard</Link></li>
-            <li><Link to='/blog'>Blog</Link></li>
-            <li><Link to='/login'>Login</Link></li>
+            {
+                user?.uid &&
+                <li><Link to='/dashboard'>Dashboard</Link></li>
 
-            {/*  {
-            user?.uid ?
-                <React.Fragment>
-                    <li><Link to='/dashboard'>Dashboard</Link></li>
-                    <li><button onClick={handleLogOut} className='btn btn-ghost'>Sign Out</button></li>
-                </React.Fragment>
-                :
-                <li><Link to='/login'>Login</Link></li>
-        } */}
+            }
+
+            <li><Link to='/blog'>Blog</Link></li>
+
+            {
+                user?.uid ?
+                    <React.Fragment>
+                        <li><button onClick={handleLogOut} className='btn btn-ghost hover:btn-error hover:rounded-lg font-semibold'>Sign Out</button></li>
+                    </React.Fragment>
+                    :
+                    <li><Link to='/login'>Login</Link></li>
+            }
         </React.Fragment>;
 
     return (
@@ -45,8 +57,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end pr-4 text-xl font-semibold">
-                {/* <h3>{user?.displayName ? user?.displayName : 'User'}</h3> */}
-                <h3>Hi, <span className='text-primary'>User</span> </h3>
+                {user?.displayName ?
+
+                    <h3>Hi, <span className='text-primary'>{user?.displayName}</span> </h3>
+                    : ''
+
+                }
+
             </div>
             <label htmlFor="dashboarddrawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

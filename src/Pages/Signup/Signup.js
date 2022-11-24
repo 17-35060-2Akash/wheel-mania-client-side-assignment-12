@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-// import { AuthContext } from '../../contexts/AuthProvider';
+import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import SocialLogin from '../Login/SocialLogin';
 // import useToken from '../../hooks/useToken';
@@ -16,25 +16,25 @@ const Signup = () => {
 
     const [createdUserEmail, setCreatedUserEmail] = useState('');
 
+    const navigate = useNavigate();
     /*  const [token] = useToken(createdUserEmail);
-     const navigate = useNavigate();
  
      if (token) {
          navigate('/');
      } */
 
-    // const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
 
     const handleSignUp = data => {
         console.log(data);
         setSignupError('');
 
-        /* createUser(data.email, data.password)
+        createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // toast.success(`Welcome ${user?.displayName}`);
-                toast.success(`Welcome!`);
+                toast.success(`Welcome ${user?.displayName}`);
+                // toast.success(`Welcome!`);
 
 
                 const profile = {
@@ -43,7 +43,8 @@ const Signup = () => {
                 updateUser(profile)
                     .then(() => {
 
-                        saveUser(data.name, data.email);
+                        // saveUser(data.name, data.email);
+                        navigate('/'); //have to remove this when token is set
                         reset();
 
                     })
@@ -53,7 +54,7 @@ const Signup = () => {
             .catch(error => {
                 console.error(error)
                 setSignupError(error.message)
-            }) */
+            })
 
     }
 
@@ -89,7 +90,7 @@ const Signup = () => {
 
 
     return (
-        <div className='h-[800px] flex justify-center items-center'>
+        <div className='h-[800px] flex justify-center items-center my-24'>
             <div className='w-96 p-7 shadow-lg rounded-xl'>
                 <h2 className='text-2xl text-center font-lighter mb-9 text-primary'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
@@ -118,7 +119,7 @@ const Signup = () => {
                                 pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])/, message: "Password Must be strong." }
                             }
                         )}
-                            className="input input-bordered w-full max-w-xs rounded-none border-0 border-b-4" placeholder='Password' />
+                            className="input input-bordered w-full max-w-xs rounded-none border-0 border-b-4" placeholder='Password' title='Password has to be minimum 6 characters, at least one uppercase and one special sign.' />
                         {errors.password && <p className='text-error p-1'>{errors.password.message}</p>}
                     </div>
 

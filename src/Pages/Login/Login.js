@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast'
 import SocialLogin from './SocialLogin';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
+import { AuthContext } from '../../contexts/AuthProvider';
 // import useToken from '../../hooks/useToken';
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
     const [userEmailForModal, setUserEmailForModal] = useState(null);
 
-    // const { signIn, resetPassword } = useContext(AuthContext);
+    const { signIn, resetPassword } = useContext(AuthContext);
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
     // const [token] = useToken(loginUserEmail);
@@ -29,18 +30,19 @@ const Login = () => {
 
     const handleLogin = data => {
         console.log(data);
-        /* setLoginError('');
+        setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 setLoginUserEmail(data.email);
+                navigate('/'); //have to remove this when token is set
                 reset();
             })
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message);
-            }); */
+            });
     }
 
     const handleEmailOnChange = event => {
@@ -70,7 +72,7 @@ const Login = () => {
     };
 
     return (
-        <div className='h-[800px] flex justify-center items-center'>
+        <div className='h-[800px] flex justify-center items-center my-10'>
             <div className='w-96 p-7 shadow-lg rounded-xl'>
                 <h2 className='text-2xl text-center font-lighter mb-9 text-secondary'>Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)} className=''>

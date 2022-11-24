@@ -65,7 +65,7 @@ const Footer = () => {
                         <Link to='/wapp' className='px-4 text-4xl'><FaWhatsappSquare></FaWhatsappSquare> </Link>
 
                     </div>
-                    <p className='text-xl font-semibold text-rose-600 pb-4 mt-20 pb-32 copyright'>Copyright©2022-All right reserved by Nasin A Akash</p>
+                    <p className='text-lg  font-bold text-[#4b0f0f] pb-4 mt-20 pb-32 copyright'>Copyright©2022-All right reserved by Nasin A Akash</p>
 
                 </div>
             </section >

@@ -44,9 +44,9 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
-            <div className="navbar-end pr-4 text-primary text-xl font-bold">
+            <div className="navbar-end pr-4 text-xl font-semibold">
                 {/* <h3>{user?.displayName ? user?.displayName : 'User'}</h3> */}
-                <h3>Hi, User</h3>
+                <h3>Hi, <span className='text-primary'>User</span> </h3>
             </div>
             <label htmlFor="dashboarddrawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

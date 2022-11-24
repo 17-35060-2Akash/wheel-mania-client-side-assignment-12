@@ -33,7 +33,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success(`Welcome ${user?.displayName}`);
+                toast.success(`Welcome ${data.name}`);
                 // toast.success(`Welcome!`);
 
 
@@ -43,8 +43,7 @@ const Signup = () => {
                 updateUser(profile)
                     .then(() => {
 
-                        // saveUser(data.name, data.email);
-                        navigate('/'); //have to remove this when token is set
+                        saveUser(data.name, data.email, data.accountType);
                         reset();
 
                     })
@@ -58,9 +57,14 @@ const Signup = () => {
 
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
-        fetch('https://doctors-portal-server-flame-pi.vercel.app/users', {
+    const saveUser = (name, email, accountType) => {
+        const user = {
+            name,
+            email,
+            role: accountType
+        };
+
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -69,7 +73,10 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log(data);
+                if (data.acknowledged) {
+                    navigate('/'); //have to remove this when token is set
+                }
                 setCreatedUserEmail(email);
             })
     };

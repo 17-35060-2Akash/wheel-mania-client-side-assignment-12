@@ -35,8 +35,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success(`Welcome ${user?.displayName}`);
                 setLoginUserEmail(data.email);
-                navigate('/'); //have to remove this when token is set
+                navigate(from, { replace: true }); //have to remove this when token is set
                 reset();
             })
             .catch(error => {

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import SocialLogin from '../Login/SocialLogin';
+import useToken from '../../hooks/useToken';
 // import useToken from '../../hooks/useToken';
 
 const Signup = () => {
@@ -17,11 +18,11 @@ const Signup = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('');
 
     const navigate = useNavigate();
-    /*  const [token] = useToken(createdUserEmail);
- 
-     if (token) {
-         navigate('/');
-     } */
+    const [token] = useToken(createdUserEmail);
+
+    if (token) {
+        navigate('/');
+    }
 
     const { createUser, updateUser } = useContext(AuthContext);
 
@@ -44,6 +45,7 @@ const Signup = () => {
                     .then(() => {
 
                         saveUser(data.name, data.email, data.accountType);
+                        setCreatedUserEmail(data.email);
                         reset();
 
                     })
@@ -75,9 +77,9 @@ const Signup = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    navigate('/'); //have to remove this when token is set
+                    // setCreatedUserEmail(email);
                 }
-                setCreatedUserEmail(email);
+
             })
     };
 

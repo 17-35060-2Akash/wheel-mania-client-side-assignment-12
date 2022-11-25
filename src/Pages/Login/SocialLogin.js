@@ -1,15 +1,24 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
 
+    const [createdGoogleEmail, setCreatedGoogleEmail] = useState('');
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+    const [token] = useToken(createdGoogleEmail);
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const provider = new GoogleAuthProvider();
 
@@ -20,6 +29,7 @@ const SocialLogin = () => {
                 console.log(user);
 
                 saveUser(user.displayName, user.email);
+                setCreatedGoogleEmail(user.email);
             })
             .catch(error => console.error(error));
     };
@@ -42,7 +52,7 @@ const SocialLogin = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    navigate(from, { replace: true });
+                    //
                 }
             })
     };

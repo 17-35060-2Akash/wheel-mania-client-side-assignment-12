@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import SocialLogin from './SocialLogin';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 // import useToken from '../../hooks/useToken';
 
 const Login = () => {
@@ -16,16 +17,16 @@ const Login = () => {
     const { signIn, resetPassword } = useContext(AuthContext);
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
-    // const [token] = useToken(loginUserEmail);
+    const [token] = useToken(loginUserEmail);
 
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
-    /* if (token) {
+    if (token) {
         navigate(from, { replace: true });
 
-    } */
+    }
 
 
     const handleLogin = data => {
@@ -37,7 +38,6 @@ const Login = () => {
                 console.log(user);
                 toast.success(`Welcome ${user?.displayName}`);
                 setLoginUserEmail(data.email);
-                navigate(from, { replace: true }); //have to remove this when token is set
                 reset();
             })
             .catch(error => {

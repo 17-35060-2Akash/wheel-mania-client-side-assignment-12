@@ -61,15 +61,15 @@ const Login = () => {
         // console.log(modalEmail);
         setUserEmailForModal(modalEmail);
 
-        /*  resetPassword(userEmailForModal)
-             .then(() => {
-                 toast.success(`Reset email sent to ${userEmailForModal}`);
-                 setUserEmailForModal(null);
-             })
-             .catch(error => {
-                 console.error(error);
-                 toast.error('Something went wrong');
-             }) */
+        resetPassword(userEmailForModal)
+            .then(() => {
+                toast.success(`Reset email sent to ${userEmailForModal}`);
+                setUserEmailForModal(null);
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error('Something went wrong');
+            });
     };
 
     return (

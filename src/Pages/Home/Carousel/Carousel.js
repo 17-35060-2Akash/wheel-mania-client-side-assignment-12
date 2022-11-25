@@ -1,5 +1,5 @@
 import React from 'react';
-import img1 from '../../../assets/banners/11.jpg';
+import img1 from '../../../assets/banners/15.jpg';
 import img2 from '../../../assets/banners/12.jpg';
 import img3 from '../../../assets/banners/14.jpg';
 import BannerItem from './BannerItem';

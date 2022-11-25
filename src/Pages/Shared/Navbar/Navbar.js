@@ -56,7 +56,7 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
-            <div className="navbar-end pr-4 text-xl font-semibold">
+            <div className="navbar-end pr-1 md:pr-4 text-sm md:text-xl font-semibold">
                 {user?.displayName ?
 
                     <h3>Hi, <span className='text-primary'>{user?.displayName}</span> </h3>

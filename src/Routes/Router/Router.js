@@ -10,6 +10,7 @@ import Login from "../../Pages/Login/Login";
 import Blog from "../../Pages/Others/Blog/Blog";
 import NotFound from "../../Pages/Others/NotFound/NotFound";
 import Signup from "../../Pages/Signup/Signup";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -48,15 +49,24 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
+                element:
+                    <AdminRoute>
+                        <AllSellers></AllSellers>
+                    </AdminRoute>
             },
             {
                 path: '/dashboard/allbuyers',
-                element: <AllBuyers></AllBuyers>
+                element:
+                    <AdminRoute>
+                        <AllBuyers></AllBuyers>
+                    </AdminRoute>
             },
             {
                 path: '/dashboard/reportedItems',
-                element: <ReportedItems></ReportedItems>
+                element:
+                    <AdminRoute>
+                        <ReportedItems></ReportedItems>
+                    </AdminRoute>
             },
         ]
     },

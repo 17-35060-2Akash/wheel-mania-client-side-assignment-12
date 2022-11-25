@@ -45,7 +45,7 @@ const Signup = () => {
                     .then(() => {
 
                         saveUser(data.name, data.email, data.accountType);
-                        setCreatedUserEmail(data.email);
+                        setCreatedUserEmail(user.email);
                         reset();
 
                     })

@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
+import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -12,6 +14,7 @@ import NotFound from "../../Pages/Others/NotFound/NotFound";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +50,22 @@ export const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Dashboard></Dashboard>
             },
+            ///for sellers
+            {
+                path: '/dashboard/addproduct',
+                element:
+                    <SellerRoute>
+                        <AddProduct></AddProduct>
+                    </SellerRoute>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element:
+                    <SellerRoute>
+                        <MyProducts></MyProducts>
+                    </SellerRoute>
+            },
+            ///for admin
             {
                 path: '/dashboard/allsellers',
                 element:

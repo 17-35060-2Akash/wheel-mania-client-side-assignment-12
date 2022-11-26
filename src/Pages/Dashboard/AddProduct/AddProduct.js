@@ -78,7 +78,7 @@ const AddProduct = () => {
                         description: data.description,
                     }
 
-                    console.log(carInfo);
+                    // console.log(carInfo);
 
                     //save product info to the db
                     fetch('http://localhost:5000/products', {
@@ -91,7 +91,7 @@ const AddProduct = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
+                            // console.log(data);
                             if (data.acknowledged) {
                                 toast.success(`Your "${category_name}" is added succesfully to your resale listing.`);
                                 navigate('/dashboard/myproducts');

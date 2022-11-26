@@ -27,13 +27,13 @@ const Signup = () => {
     const { createUser, updateUser } = useContext(AuthContext);
 
     const handleSignUp = data => {
-        console.log(data);
+        // console.log(data);
         setSignupError('');
 
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user.email);
                 toast.success(`Welcome ${data.name}`);
                 // toast.success(`Welcome!`);
 

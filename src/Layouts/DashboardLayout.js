@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
 import useSeller from '../hooks/useSeller';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
 
+    const [isBuyer] = useBuyer(user?.email);
     const [isSeller] = useSeller(user?.email);
     const [isAdmin] = useAdmin(user?.email);
 
@@ -24,6 +26,16 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboarddrawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         {/* <!-- Sidebar content here --> */}
+
+                        {/* for buyer  */}
+                        {
+                            isBuyer &&
+                            <React.Fragment>
+                                <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+                                <li><Link to='/dashboard/mywishlist'>My WishList</Link></li>
+                            </React.Fragment>
+
+                        }
 
                         {/* for seller  */}
                         {

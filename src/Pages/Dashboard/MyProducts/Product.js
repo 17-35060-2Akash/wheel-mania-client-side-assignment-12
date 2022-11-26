@@ -1,13 +1,12 @@
 import React from 'react';
 import { FaArrowRight, FaClock } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import { FaStar, FaDollarSign } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
 const Product = ({ product }) => {
     const { category_id, category_name, condition, description, email, img, location, original_price,
         mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = product;
+
     return (
         <div className="card glass rounded-md shadow-xl bg-zinc-400   text-white hover:text-black">
             <PhotoProvider>

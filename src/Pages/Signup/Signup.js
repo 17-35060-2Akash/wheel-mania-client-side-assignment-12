@@ -66,6 +66,13 @@ const Signup = () => {
             role: accountType
         };
 
+        if (accountType === 'seller') {
+            user['verification'] = 'unverified';
+        }
+        else {
+            user['verification'] = 'N/A';
+        }
+
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {

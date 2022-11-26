@@ -38,7 +38,8 @@ const SocialLogin = () => {
         const user = {
             name,
             email,
-            role: 'buyer'
+            role: 'buyer',
+            verification: 'N/A'
         };
 
         fetch('http://localhost:5000/users', {

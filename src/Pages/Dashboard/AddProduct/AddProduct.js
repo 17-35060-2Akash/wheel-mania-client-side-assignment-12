@@ -3,13 +3,17 @@ import { format } from 'date-fns';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import LoaderCircular from '../../../components/LoaderCircular';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    // const [product, setProduct] = useState({});
 
     const { user } = useContext(AuthContext);
     const imageHostingKey = process.env.REACT_APP_imgbb_key;
+    const navigate = useNavigate();
 
     const { data: categories = [], isLoading, refetch } = useQuery({
         queryKey: ['categories'],
@@ -23,6 +27,11 @@ const AddProduct = () => {
     // console.log(categories);
 
     const handleAddProduct = data => {
+
+        if (data.description.length > 300) {
+            return toast.error("Description can't be more than 300 words!");
+        }
+
         // console.log(data);
         const { category_id } = data;
 
@@ -67,6 +76,24 @@ const AddProduct = () => {
 
                     // console.log(carInfo);
 
+                    //save product info to the db
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(carInfo)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.acknowledged) {
+                                toast.success(`Your "${category_name}" is added succesfully to your resale listing.`);
+                                navigate('/dashboard/myproducts');
+                            }
+                        })
+
                 }
             })
 
@@ -77,30 +104,13 @@ const AddProduct = () => {
         // console.log(format(carInfo.posted_date, 'PP'));
         // console.log(format(carInfo.posted_date, 'p'));
 
-        if (data.description.length > 300) {
-            return toast.error("Description can't be more than 300 words!");
-        }
 
-        /* fetch('https://shutter-up-server.vercel.app/services', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(service)
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                if (data.acknowledged) {
-                    toast.success('Cheers! Service Added Successfully.');
-                    event.target.reset();
-                }
-                else {
-                    toast.error('Something went wrong adding your service!');
-                }
-            }) */
 
     };
+
+    if (isLoading) {
+        return <LoaderCircular></LoaderCircular>
+    }
 
 
 
@@ -173,7 +183,7 @@ const AddProduct = () => {
                 <textarea {...register("description", { required: "Description is required." })} name='description' className="textarea  h-36 w-full py-5 mb-5 bg-white text-md px-10" placeholder="Description" title='not more than 300 words' ></textarea>
                 {errors.mobile && <p className='text-error p-1 mb-5'>{errors.mobile.message}</p>}
 
-                <input className='btn bg-green-500 border-0 w-full h-14 text-md font-bold' type='submit' value='Add Service' />
+                <input className='btn bg-green-500 border-0 w-full h-14 text-md font-bold text-white' type='submit' value='Add Your Product' />
 
             </form>
 

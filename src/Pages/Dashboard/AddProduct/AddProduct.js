@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../../components/Loader';
 import LoaderCircular from '../../../components/LoaderCircular';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
@@ -38,6 +39,8 @@ const AddProduct = () => {
         const category = categories.find(category => category_id === category._id);
         const category_name = category.name;
         const date = new Date();
+        const posted_date = format(date, 'PP');
+        const posted_time = format(date, 'p');
         // console.log(category_name);
 
         //uploading data to imgbb
@@ -65,7 +68,8 @@ const AddProduct = () => {
                         original_price: data.original_price,
                         resale_price: data.resale_price,
                         usage: data.usage,
-                        posted_date: date,
+                        posted_date,
+                        posted_time,
                         condition: data.condition,
                         seller_name: user?.displayName,
                         email: user?.email,
@@ -74,7 +78,7 @@ const AddProduct = () => {
                         description: data.description,
                     }
 
-                    // console.log(carInfo);
+                    console.log(carInfo);
 
                     //save product info to the db
                     fetch('http://localhost:5000/products', {
@@ -109,7 +113,7 @@ const AddProduct = () => {
     };
 
     if (isLoading) {
-        return <LoaderCircular></LoaderCircular>
+        return <Loader></Loader>
     }
 
 
@@ -117,13 +121,13 @@ const AddProduct = () => {
     return (
         <div className=''>
 
-            <div className=" py-10 my-20 ">
-                <h1 className='text-xl lg:text-4xl font-semibold add-title text-secondary'>Add Your Product Here</h1>
-            </div>
 
-            <form onSubmit={handleSubmit(handleAddProduct)} className='p-24 bg-slate-100 mt-14 mb-36 mx-auto '>
 
-                <div className='mb-5'>
+            <form onSubmit={handleSubmit(handleAddProduct)} className='pb-36 pt-5 px-10  md:px-60 bg-slate-100  mx-auto '>
+                <div className="my-16 lg:my-20 mb-16 lg:mb-20">
+                    <h1 className='text-2xl lg:text-4xl font-semibold add-title text-secondary'>Add Your Product</h1>
+                </div>
+                <div className='mb-5 '>
                     <select {...register("category_id", { required: "Category_id is required." })} name='category_id' className="select select-bordered w-full border-4 border-gray-100 h-14 text-md px-10">
                         <option disabled selected>Choose a brand category:</option>
                         {

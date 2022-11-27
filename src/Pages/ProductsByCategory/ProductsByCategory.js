@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import BookingModal from '../BookingModal/BookingModal';
 import EachProduct from './EachProduct';
 
 const ProductsByCategory = () => {
     const products = useLoaderData();
-    console.log(products)
+    const [product, setProduct] = useState(null);
+    const { user } = useContext(AuthContext);
+    // console.log(products);
+
+
     return (
         <div>
             <div className="my-16 lg:my-20 mb-16 lg:mb-20">
@@ -14,9 +20,16 @@ const ProductsByCategory = () => {
                 {
                     products.map(product => <EachProduct
                         key={product._id}
-                        product={product}></EachProduct>)
+                        product={product}
+                        setProduct={setProduct}></EachProduct>)
                 }
             </div>
+            {
+                product && <BookingModal
+                    product={product}
+                    user={user}
+                    setProduct={setProduct}></BookingModal>
+            }
         </div>
     );
 };

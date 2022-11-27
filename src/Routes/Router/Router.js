@@ -8,6 +8,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import MyWishlist from "../../Pages/Dashboard/MyWishlist/MyWishlist";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -116,6 +117,13 @@ export const router = createBrowserRouter([
                     <AdminRoute>
                         <ReportedItems></ReportedItems>
                     </AdminRoute>
+            },
+            ///for everyone to pay
+            {
+                path: '/dashboard/payment/:id',
+                element:
+                    <Payment></Payment>,
+                loader: async ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
             },
         ]
     },

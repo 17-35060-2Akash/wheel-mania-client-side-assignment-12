@@ -4,7 +4,7 @@ import { FaCheckCircle, FaClock, FaPlus, FaPlusCircle, FaUser } from "react-icon
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
-const EachProduct = ({ product }) => {
+const EachProduct = ({ product, setProduct }) => {
     // const [verification, setVerification] = useState('');
 
     const { category_id, category_name, condition, description, email, img, location, original_price,
@@ -20,7 +20,7 @@ const EachProduct = ({ product }) => {
         }
     });
 
-    console.log(seller);
+    // console.log(seller);
 
 
 
@@ -111,8 +111,9 @@ const EachProduct = ({ product }) => {
 
 
                 <div className='flex flex-row justify-between align-middle text-lg mt-6 '>
-                    <button className="btn  btn-primary w-full text-white">Book Now</button>
-
+                    <label
+                        onClick={() => setProduct(product)}
+                        htmlFor="booking-modal" className="btn  btn-primary w-full text-white">Book Now</label>
                 </div>
 
 

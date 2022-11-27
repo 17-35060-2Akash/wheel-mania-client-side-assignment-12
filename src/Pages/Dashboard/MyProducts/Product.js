@@ -3,12 +3,12 @@ import { FaArrowRight, FaClock } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
-const Product = ({ product }) => {
-    const { category_id, category_name, condition, description, email, img, location, original_price,
+const Product = ({ product, setDeletingProduct }) => {
+    const { _id, category_id, category_name, condition, description, email, img, location, original_price,
         mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = product;
 
     return (
-        <div className="card glass rounded-md shadow-xl bg-zinc-400   text-white hover:text-black">
+        <div className="card glass rounded-md shadow-2xl bg-zinc-400   text-white hover:text-black">
             <PhotoProvider>
                 <PhotoView src={img}>
                     <figure><img src={img} alt="car!" /></figure>
@@ -46,8 +46,7 @@ const Product = ({ product }) => {
 
                 <div className='flex flex-row justify-between align-middle text-lg mt-6 '>
                     <button className="btn  btn-primary">Advertise</button>
-                    <button className="btn  btn-secondary px-8">Delete</button>
-
+                    <label onClick={() => setDeletingProduct(product)} htmlFor="confirmation-modal" className="btn  btn-secondary px-8">Delete</label>
                 </div>
 
                 {/* <div className='mt-4'>

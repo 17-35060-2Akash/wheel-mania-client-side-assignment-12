@@ -75,6 +75,7 @@ const AddProduct = () => {
                         email: user?.email,
                         mobile: data.mobile,
                         resale_status: 'Available',
+                        advertise: "false",
                         description: data.description,
                     }
 

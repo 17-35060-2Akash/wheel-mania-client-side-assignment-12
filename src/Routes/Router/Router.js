@@ -15,6 +15,7 @@ import Login from "../../Pages/Login/Login";
 import Blog from "../../Pages/Others/Blog/Blog";
 import NotFound from "../../Pages/Others/NotFound/NotFound";
 import ProductsByCategory from "../../Pages/ProductsByCategory/ProductsByCategory";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -58,6 +60,7 @@ export const router = createBrowserRouter([
             <PrivateRoute>
                 <DashboardLayout></DashboardLayout>
             </PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import BookingModal from '../BookingModal/BookingModal';
@@ -9,6 +10,36 @@ const ProductsByCategory = () => {
     const [product, setProduct] = useState(null);
     const { user } = useContext(AuthContext);
     // console.log(products);
+
+    const addToWishList = (id, email, product_name) => {
+        const wishListProduct = {
+            product_id: id,
+            user_email: email,
+            product_name,
+            status: 'available'
+
+        }
+        // console.log(wishListProduct);
+
+        fetch('http://localhost:5000/wishlistproducts', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(wishListProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success(`"${product_name}" is added to your wishlist.`);
+                }
+                else {
+                    toast.error(`Already added to your wishlist`);
+                }
+            })
+    };
 
 
     return (
@@ -21,7 +52,9 @@ const ProductsByCategory = () => {
                     products.map(product => <EachProduct
                         key={product._id}
                         product={product}
-                        setProduct={setProduct}></EachProduct>)
+                        setProduct={setProduct}
+                        user={user}
+                        addToWishList={addToWishList}></EachProduct>)
                 }
             </div>
             {

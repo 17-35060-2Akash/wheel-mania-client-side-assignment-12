@@ -31,7 +31,7 @@ const MyOrders = () => {
 
     const handlePayement = order => {
         // console.log(order._id);
-        navigate(`/payment/${order._id}`)
+        navigate(`/dashboard/payment/${order._id}`)
     };
 
 
@@ -58,17 +58,16 @@ const MyOrders = () => {
                                 </td>
                                 <td className='text-center font-semibold'>{order?.product_name}</td>
                                 <td className='text-purple-600 font-semibold text-center'>{order?.resale_price} BDT</td>
-                                {/* <td className='text-center'>
+                                <td className='text-center'>
                                     {
-                                        seller?.verification === 'verified' ?
-                                            <p className='badge badge-success py-4 font-semibold'>verified</p>
-                                            :
-                                            <button onClick={() => handleVerifySeller(seller._id)} className='btn btn-sm bg-cyan-400 border-0 text-white font-semibold'>{seller.verification}</button>
+                                        order.order_status === 'pending' && <label onClick={() => setPayment(order)} htmlFor="confirmation-modal" className='btn btn-sm btn-error font-semibold text-white'>Pay</label>
 
                                     }
-                                </td> */}
-                                <td className='text-center'>
-                                    <label onClick={() => setPayment(order)} htmlFor="confirmation-modal" className='btn btn-sm btn-error font-semibold text-white'>Pay</label>
+                                    {
+                                        order.order_status === 'paid' && <label onClick={() => setPayment(order)} htmlFor="confirmation-modal" className='btn btn-sm btn-success font-semibold text-white'>paid</label>
+
+                                    }
+
                                 </td>
                             </tr>)
                         }

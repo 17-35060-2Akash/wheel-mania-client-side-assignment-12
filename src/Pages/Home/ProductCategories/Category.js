@@ -16,9 +16,9 @@ const Category = ({ category }) => {
 
                         </div>
                         <div className="card-actions justify-end">
-                            <Link to={`/category/${_id}`}>
-                                <button className="btn btn-secondary md:text-md lg:text-xl text-white px-5 py-3"><FaArrowRight></FaArrowRight></button>
-                            </Link>
+                            {/* <Link to={`/category/${_id}`}> */}
+                            <button className="btn btn-secondary md:text-md lg:text-xl text-white px-5 py-3"><FaArrowRight></FaArrowRight></button>
+                            {/* </Link> */}
                         </div>
                     </div>
                 </div>

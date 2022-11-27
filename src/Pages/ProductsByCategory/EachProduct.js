@@ -12,7 +12,7 @@ const EachProduct = ({ product }) => {
 
     //getting the seller
     const { data: seller = {}, refetch } = useQuery({
-        queryKey: ['seller'],
+        queryKey: ['seller', email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users/seller?email=${email}`);
             const data = await res.json();
@@ -20,8 +20,7 @@ const EachProduct = ({ product }) => {
         }
     });
 
-    const { verification } = seller;
-    console.log(verification);
+    console.log(seller);
 
 
 
@@ -90,7 +89,7 @@ const EachProduct = ({ product }) => {
                         <FaUser className='text-5xl mr-4 mb-3 mask mask-circle bg-gray-300 p-2'></FaUser>
 
                         <div className='text-start'>
-                            <div className='flex flex-row mt-1'>
+                            <div className='flex flex-row '>
                                 <span className=' text-md font-bold ml-1 text-primary mr-0'>{seller_name}</span>
                                 {
                                     seller?.verification === 'verified' ?

@@ -1,16 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { FaCheckCircle, FaClock, FaPlus, FaUser } from "react-icons/fa";
+import { useQuery } from '@tanstack/react-query';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import 'react-photo-view/dist/react-photo-view.css';
+import { FaCheckCircle, FaClock, FaUser } from 'react-icons/fa';
 
-const EachProduct = ({ product, setProduct, user, addToWishList }) => {
-    // const [verification, setVerification] = useState('');
+const WishListCard = ({ item, setPayment, user }) => {
 
     const { _id, category_id, category_name, condition, description, email, img, location, original_price,
-        mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = product;
+        mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = item.product;
 
-    //getting the seller
+    console.log(item.product);
+
+
     const { data: seller = {}, refetch } = useQuery({
         queryKey: ['seller', email],
         queryFn: async () => {
@@ -19,23 +19,6 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
             return data;
         }
     });
-
-    // console.log(seller);
-
-
-
-    /* fetch(`http://localhost:5000/users/seller?email=${email}`)
-        .then(res => res.json())
-        .then(data => {
-            setVerification(data.verification);
-        }) */
-
-
-
-
-
-
-
 
     return (
         <div className="card rounded-md shadow-2xl">
@@ -60,14 +43,14 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
                     </div>
 
 
-                    <div className='flex flex-row justify-between align-middle ' title='Add to Wishlist'>
+                    {/*  <div className='flex flex-row justify-between align-middle ' title='Add to Wishlist'>
                         <button onClick={() => addToWishList(user?.email, product)} className="btn btn-sm bg-cyan-400 text-white border-0 text-lg"><FaPlus></FaPlus></button>
-                    </div>
+                    </div> */}
 
                 </div>
 
 
-                <div className='text-start mt-4'>
+                {/* <div className='text-start mt-4'>
                     <p>Condition: <span className=''>{condition}</span></p>
                     <p>Usage Time: {usage} years</p>
                     <p>Original Price: <span className=''> {original_price} BDT</span></p>
@@ -75,12 +58,9 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
                     <p>Location: {location} years</p>
                     <p>Contact: {mobile}</p>
 
-                </div>
-
-                {/* <div className='mt-4'>
-                    <p>{description}</p>
-                    <p>{description.slice(0, 99) + ' ...'}</p>
                 </div> */}
+
+
 
                 <div className='flex flex-row justify-between align-middle mt-5'>
                     <div className='flex justify-start align-middle ml-1 mb-1'>
@@ -116,8 +96,8 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
 
                 <div className='flex flex-row justify-between align-middle text-lg mt-6 '>
                     <label
-                        onClick={() => setProduct(product)}
-                        htmlFor="booking-modal" className="btn  btn-primary w-full text-white">Book Now</label>
+                        onClick={() => setPayment(item)}
+                        htmlFor="booking-modal" className="btn  btn-secondary w-full text-white">Pay</label>
                 </div>
 
 
@@ -126,4 +106,4 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
     );
 };
 
-export default EachProduct;
+export default WishListCard;

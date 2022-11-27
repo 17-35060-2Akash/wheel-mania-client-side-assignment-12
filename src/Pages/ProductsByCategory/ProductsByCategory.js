@@ -11,11 +11,11 @@ const ProductsByCategory = () => {
     const { user } = useContext(AuthContext);
     // console.log(products);
 
-    const addToWishList = (id, email, product_name) => {
+    const addToWishList = (email, product) => {
         const wishListProduct = {
-            product_id: id,
             user_email: email,
-            product_name,
+            product_id: product._id,
+            product: product,
             status: 'available'
 
         }
@@ -31,15 +31,17 @@ const ProductsByCategory = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.acknowledged) {
-                    toast.success(`"${product_name}" is added to your wishlist.`);
+                    toast.success(`"${product.product_name}" is added to your wishlist.`);
                 }
                 else {
                     toast.error(`Already added to your wishlist`);
                 }
             })
     };
+
+
 
 
     return (

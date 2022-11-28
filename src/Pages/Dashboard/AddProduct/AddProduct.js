@@ -7,8 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/Loader';
 import LoaderCircular from '../../../components/LoaderCircular';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const AddProduct = () => {
+    useTitle('Add Product');
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     // const [product, setProduct] = useState({});
 

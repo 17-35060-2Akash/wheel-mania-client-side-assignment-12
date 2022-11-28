@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import BookingModal from '../BookingModal/BookingModal';
 import EachProduct from './EachProduct';
 
 const ProductsByCategory = () => {
+    useTitle('Products');
+
     const products = useLoaderData();
     const [product, setProduct] = useState(null);
     const { user } = useContext(AuthContext);

@@ -11,7 +11,7 @@ const BannerItem = ({ slide }) => {
             </div>
 
             <div className="absolute flex flex-col justify-end transform -translate-y-1/2 lg:right-24 right-5 top-1/2">
-                <h1 className='text-5xl font-bold text-white text-end carousel-add'>  THE <span className='text-error font-bold'>EASIEST</span> WAY TO BUY <br /> YOUR NEXT CAR</h1>
+                <h1 className='text-xl md:text-5xl font-bold text-white text-end carousel-add'>  THE <span className='text-error font-bold'>EASIEST</span> WAY TO BUY <br /> YOUR NEXT CAR</h1>
 
             </div>
             <div className="absolute flex flex-col justify-end transform -translate-y-1/2 lg:right-24 right-5  top-1/4">

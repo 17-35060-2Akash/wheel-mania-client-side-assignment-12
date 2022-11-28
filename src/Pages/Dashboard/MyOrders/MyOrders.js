@@ -3,8 +3,11 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const MyOrders = () => {
+    useTitle('My Orders');
+
     const { user } = useContext(AuthContext);
     const [payement, setPayment] = useState(null);
 

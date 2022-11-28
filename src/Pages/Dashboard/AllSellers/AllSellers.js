@@ -3,8 +3,11 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const AllSellers = () => {
+    useTitle('All Sellers');
+
     const { user } = useContext(AuthContext);
     const [deleteSeller, setDeleteSeller] = useState(null);
 

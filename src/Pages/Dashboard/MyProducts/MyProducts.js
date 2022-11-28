@@ -4,9 +4,12 @@ import toast from 'react-hot-toast';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
 import Loader from '../../../components/Loader';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import Product from './Product';
 
 const MyProducts = () => {
+    useTitle('My Products');
+
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
 

@@ -8,6 +8,7 @@ import useToken from '../../hooks/useToken';
 // import useToken from '../../hooks/useToken';
 
 const Signup = () => {
+    useToken('Sign Up');
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [signupError, setSignupError] = useState('');
@@ -45,7 +46,7 @@ const Signup = () => {
                     .then(() => {
 
                         saveUser(data.name, data.email, data.accountType);
-                        setCreatedUserEmail(user.email);
+                        setCreatedUserEmail(data.email);
                         reset();
 
                     })

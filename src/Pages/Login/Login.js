@@ -7,9 +7,12 @@ import SocialLogin from './SocialLogin';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
+import useTitle from '../../hooks/useTitle';
 // import useToken from '../../hooks/useToken';
 
 const Login = () => {
+    useTitle('Login');
+
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [loginError, setLoginError] = useState('');
     const [userEmailForModal, setUserEmailForModal] = useState(null);

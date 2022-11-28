@@ -1,24 +1,17 @@
 import React from 'react';
+import useTitle from '../../../hooks/useTitle';
 // import useTitle from '../../../hooks/useTitle';
 
 
 const Blog = () => {
-    // useTitle('Blog');
 
-
-    /*     13.1 What are the different ways to manage a state in a React application?
-    
-    13.2 How does prototypical inheritance work?
-    
-    13.3 What is a unit test? Why should we write unit tests?
-    
-    13.4 React vs. Angular vs. Vue? */
+    useTitle('Blog');
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content text-center">
+        <div className="px-10 bg-base-200">
+            <div className=" text-center">
 
-                <div className="mt-20">
+                <div className="py-20">
                     <h1 className="text-4xl font-bold">Frequently Asked Questios</h1>
                     {/* 1 */}
                     <div className='pt-20 text-start'>

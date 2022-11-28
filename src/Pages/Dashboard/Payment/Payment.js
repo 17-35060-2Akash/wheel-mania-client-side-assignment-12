@@ -1,20 +1,22 @@
 import React from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import CheckOutForm from './CheckOutForm';
 import Loader from '../../../components/Loader';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe(process.env.REACT_APP_stripe_pk);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
+// console.log(stripePromise);
 
 const Payment = () => {
     const order = useLoaderData();
-    const navigation = useNavigation();
-    console.log(order);
 
-    if (navigation.state === 'loading') {
-        return <Loader></Loader>
-    }
+    // const navigation = useNavigation();
+    // console.log(order);
+
+    /*  if (navigation.state === 'loading') {
+         return <Loader></Loader>
+     } */
     return (
         <div>
             <div className='mt-20'>
@@ -25,8 +27,7 @@ const Payment = () => {
             <div className='w-2/3 mx-auto mt-20 shadow-2xl p-20 rounded-xl'>
                 <Elements stripe={stripePromise}>
                     <CheckOutForm
-                        order={order}
-                    ></CheckOutForm>
+                        order={order}></CheckOutForm>
                 </Elements>
             </div>
         </div>

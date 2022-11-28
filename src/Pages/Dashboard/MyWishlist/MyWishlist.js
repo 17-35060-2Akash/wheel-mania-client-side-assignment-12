@@ -6,9 +6,11 @@ import BookingModal from '../../BookingModal/BookingModal';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import useTitle from '../../../hooks/useTitle';
 
 
 const MyWishlist = () => {
+    useTitle('My Wishlist');
     const { user } = useContext(AuthContext);
     const [payement, setPayment] = useState(null);
     // const [wishList, setWishList] = useState([]);

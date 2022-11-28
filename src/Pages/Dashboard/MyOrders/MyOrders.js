@@ -23,7 +23,7 @@ const MyOrders = () => {
         }
     });
 
-    console.log(orders);
+    // console.log(orders);
 
     const closeModal = () => {
         setPayment(null);

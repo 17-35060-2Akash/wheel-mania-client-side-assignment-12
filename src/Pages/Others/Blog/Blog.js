@@ -5,6 +5,15 @@ import React from 'react';
 const Blog = () => {
     // useTitle('Blog');
 
+
+    /*     13.1 What are the different ways to manage a state in a React application?
+    
+    13.2 How does prototypical inheritance work?
+    
+    13.3 What is a unit test? Why should we write unit tests?
+    
+    13.4 React vs. Angular vs. Vue? */
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content text-center">
@@ -13,105 +22,121 @@ const Blog = () => {
                     <h1 className="text-4xl font-bold">Frequently Asked Questios</h1>
                     {/* 1 */}
                     <div className='pt-20 text-start'>
-                        <h2 className='text-xl text-blue-600 font-semibold'>Q1. What are the difference between SQL and NoSQL?</h2>
+                        <h2 className='text-xl text-primary font-semibold'>Q1. What are the different ways to manage a state in a React application?</h2>
                         <p className="py-6 text-lg">
                             <span className='text-secondary font-medium'>Answer: </span>
                             <br />
                             <br />
-                            Whereas <strong className='text-teal-400'>SQL</strong> is primarily used to query and operate database systems,
-                            it enables you to store, handle, delete, and modify data in an organized way. As for  <strong className='text-teal-400'>NoSQL</strong>,
-                            it is a non-relational database that does not use SQL. Here is a table to track the differences easily:
+                            React state management is <span className=' font-medium'>a process for managing the data that
+                                React components need in order to render themselves. </span>
+                            This data is typically stored in the component's state object. When the state object changes, the component will re-render itself.
+                            React state management is basically half of a React app.
                         </p>
-                        <div className="overflow-x-auto">
-                            <table className="table w-full text-center">
 
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th className='text-center text-lg text-secondary'>SQL</th>
-                                        <th className='text-center text-lg text-secondary'>NoSQL</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <p className="py-6 text-lg text-purple-500 font-semibold">
+                            The Four Kinds of React State to Manage as followings:
+                            <br />
+                            <ul className=' font-semibold'>
+                                <li>1. Local state</li>
+                                <li>2. Global state</li>
+                                <li>3. Server state, and</li>
+                                <li>4. URL state</li>
+                            </ul>
+                        </p>
+                        <p className="py-4 text-lg">
 
-                                    <tr>
-                                        <th>1</th>
-                                        <td>Have fixed or static <br /> or predefined schema</td>
-                                        <td>They have dynamic schema</td>
-                                    </tr>
+                            <span className='font-bold text-cyan-600'>Local (UI) state :</span> Local state is data we manage in one or another component.
 
-                                    <tr className="active">
-                                        <th>2</th>
-                                        <td>Best suited for complex <br />queries</td>
-                                        <td>Are not so good for complex<br /> queries</td>
-                                    </tr>
+                            Local state is most often managed in React using the useState hook.
+                        </p>
+                        <p className="py-4 text-lg">
 
-                                    <tr>
-                                        <th>3</th>
-                                        <td>Are not suited for hierarchical<br /> data storage</td>
-                                        <td>Are best suited for hierarchical<br /> data storage</td>
-                                    </tr>
-                                    <tr className="active">
-                                        <th>4</th>
-                                        <td>uses RELATIONAL DATABASE</td>
-                                        <td>Non-relational or <br />distributed database system</td>
-                                    </tr>
-                                    <tr>
-                                        <th>5</th>
-                                        <td>Vertically Scalable</td>
-                                        <td>Horizontally scalable</td>
-                                    </tr>
-                                    <tr className="active">
-                                        <th>6</th>
-                                        <td>MySQL, PostgreSQL, Oracle,<br /> MS-SQL Server etc are<br /> examples</td>
-                                        <td>MongoDB, GraphQL, HBase, Neo4j, <br />Cassandra etc are <br />examles</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            <span className='font-bold text-cyan-600'>Global (UI) state :</span> Global state is data we manage across multiple components.
+
+                            Global state is necessary when we want to get and update data anywhere in our app, or in multiple components at least.
+                        </p>
+
+                        <p className="py-4 text-lg">
+
+                            <span className='font-bold text-cyan-600'>Server state :</span> Data that comes from an external server that must be integrated with our UI state.
+
+                            Server state is a simple concept, but can be hard to manage alongside all of our local and global UI state.
+                        </p>
+
+                        <p className="py-4 text-lg">
+
+                            <span className='font-bold text-cyan-600'>URL state :</span> Data that exists on our URLs, including the pathname and query parameters.
+
+                            URL state is often missing as a category of state, but it is an important one.
+                        </p>
+
                     </div>
                     {/* 1 */}
 
 
                     {/* 2 */}
                     <div className='pt-20 text-start'>
-                        <h2 className='text-xl text-blue-600 font-semibold'>Q2. What is JWT, and how does it work?</h2>
+                        <h2 className='text-xl text-primary font-semibold'>Q2. How does prototypical inheritance work?</h2>
                         <p className="py-6 text-lg">
                             <span className='text-secondary font-medium'>Answer:</span>
                             <br />
                             <br />
-                            <span className='text-xl font-medium text-purple-500'> JWT stands for JSON Web Token.</span> <br />It's a tool for securely transmitting information between parties as JSON object.
-                            It is compact, readable and digitally signed using a private key/ or a public key pair by the Identity Provider. So the integrity and authenticity of the token can be verified by other parties involved.
-                            <u className='text-green-600'>The purpose of using JWT is not to hide data but to ensure the authenticity of the data.</u> JWT is signed and encoded, not encrypted.
-                            JWT is a token based stateless authentication mechanism. Since it is a client-side based stateless session, server doesn't have to completely rely on a datastore(database) to save session information.
+                            <span className='text-xl font-medium text-purple-500'> Prototypical Inheritance</span> <br />
+                            <strong>prototypical inheritance refers to the ability to access object properties from another object.</strong> We use a JavaScript prototype to add
+                            new properties and methods to an existing object constructor.
+                            When it comes to inheritance, JavaScript only has one construct: objects. The most important difference between class- and prototype-based inheritance is that a class defines a type which can be instantiated at runtime, whereas a prototype is itself an object instance.
                         </p>
 
-                        <p className='text-lg font-medium'>JWT consists of three parts: <br />1. A header,<br />2. payload, and <br /> 3. signature.</p>
 
-                        <p className="py-6 text-blue-600 font-semibold text-xl">How it works?</p>
-                        <p className="py-6 py-6 text-lg">When a user registers to a new website, he's given a two tokens from the server side.
-                            The server issues initially an <span className='text-2xl text-purple-600'> Access token</span> and a <span className='text-2xl text-purple-600'> Refresh Token</span> which are provided to the client side. Basically in the client side
-                            these are saved in either the Local Storage or a bit more safer place as HTTP only cookies. When the user logs in bu using his id, the access token'
-                            is checked by the server and he gets in. Moreover access tokens are temporary.
-                            When it expires, the server asks for the refresh token and issue another access token.
-                            This is a continious process.</p>
-                        <p className="py-6 py-6 text-lg text-amber-600">But the refresh token expires a date later mostly a long duration and the user has to
-                            sign in for both of these tokens. This is the simplest thought.</p>
+                        <p className="pt-6 pb-2 text-blue-600 font-semibold text-xl">How it works?</p>
+                        <p>Each object has a private property which holds
+                            a link to another object called its prototype. That prototype object has a prototype of its own,
+                            and so on until an object is reached with null as its prototype.</p>
+                        <p className='text-lg font-medium text-amber-600 pt-5'>So in conclusion JavaScript is a prototype-based, Object Oriented programming language. After the ES6 updates, JavaScript allowed for “prototypal inheritance”, meaning that objects and methods can be shared, extended, and copied.</p>
+
                     </div>
                     {/* 2 */}
 
 
                     {/* 3 */}
-                    <div className='pt-20 text-start'>
-                        <h2 className='text-xl text-blue-600 font-semibold'>Q3. What is the difference between javascript and NodeJS?</h2>
+                    <div className='pt-20 text-start mb-20'>
+                        <h2 className='text-xl text-blue-600 font-semibold'>Q3. What is a unit test?  Why should we write unit tests?</h2>
                         <p className="py-6 text-lg">
                             <span className='text-secondary font-medium'>Answer:</span>
                             <br />
                             <br />
-                            JavaScript is a simple programming language that can
-                            be used with any browser that has the JavaScript Engine
-                            installed. Node.js, on the other hand, is an interpreter or execution
-                            environment for the JavaScript programming language.
+                            <span className='text-purple-500 text-xl font-medium'> Unit testing</span> is a <span className='text-purple-500 text-xl font-medium'> software development process </span>
+                            in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is
+                            done during the development process by the software developers and sometimes QA staff.  <span className='text-secondary font-medium'>The main objective of unit testing is to isolate written code to test and determine if it works as intended.
+                                Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.</span>
+
+                        </p>
+
+                        <p className='pt-6 text-xl font-semibold'>How unit tests work?</p>
+
+                        <p className="py-4 text-lg text-cyan-600 font-medium">A unit test typically comprises of three stages: plan, cases and scripting and the unit test itself. In the first step, the unit test is prepared and reviewed. The next step is for the test cases and scripts to be made, then the code is tested.
+                        </p>
+
+                        <p className='py-4 text-lg'>
+
+                            Test-driven development requires that developers first write failing unit tests. Then they write code and refactor the application until the test passes. TDD typically results in an explicit and predictable code base.</p>
+                    </div>
+                    {/* 3 */}
+
+
+                    {/* 4 */}
+
+                    <div className='pt-20 text-start'>
+                        <h2 className='text-xl text-blue-600 font-semibold'>Q4. React vs. Angular vs. Vue?</h2>
+                        <p className="py-6 text-lg">
+                            <span className='text-secondary font-medium'>Answer:</span>
+                            <br />
+                            <br />
+                            It's easier to learn Vue than angular and it reasonably
+                            takes the same amount of time and effort as learning react.
+                            Although some people argue that it's even easier to learn
+                            than react but that's of
+                            course subjective and varies from person to person.
                         </p>
 
                         <p className="py-6 text-xl font-semibold">Here is a table to see the comparison:</p>
@@ -122,81 +147,82 @@ const Blog = () => {
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th className='text-center text-lg text-secondary'>JavaScript</th>
-                                        <th className='text-center text-lg text-secondary'>Node.js</th>
+                                        <th>Diff Keys</th>
+                                        <th className=' text-lg font-lighter text-secondary'>Angular JS</th>
+                                        <th className=' text-lg font-lighter text-secondary'>React JS</th>
+                                        <th className=' text-lg font-lighter text-secondary'>Vue JS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <tr>
                                         <th>1</th>
-                                        <td>Any browser with a competent <br /> browser engine will operate</td>
-                                        <td>It's a JavaScript translator and<br /> environment</td>
+                                        <td>Launch Year</td>
+                                        <td>2010</td>
+                                        <td>2013</td>
+                                        <td>2014</td>
                                     </tr>
 
                                     <tr className="active">
                                         <th>2</th>
-                                        <td>a programming language</td>
-                                        <td>A JS translator and environment<br /> that includes some valuable libs.<br /> for JS programming</td>
+                                        <td>Developed By</td>
+                                        <td>Google</td>
+                                        <td>Facebook</td>
+                                        <td>Even You <br /> (ex-Google)</td>
                                     </tr>
 
                                     <tr>
                                         <th>3</th>
-                                        <td>The node community does<br /> not care about JavaScript</td>
-                                        <td>All node projects represent<br /> the JavaScript community</td>
+                                        <td>Community</td>
+                                        <td>Large community as
+                                            <br />it's the oldest.
+                                        </td>
+                                        <td>vast community.</td>
+                                        <td>Growing Community</td>
                                     </tr>
 
                                     <tr className="active">
                                         <th>4</th>
-                                        <td>It's made for creating<br /> network-centric apps</td>
-                                        <td>It's made for real-time <br />data-intensive apps <br />that run on multiple platforms</td>
+                                        <td>Job Market</td>
+                                        <td>5000-8000 Angular developers <br /> jobs on linkdin</td>
+                                        <td>Around 8000 for REACT JS</td>
+                                        <td>Less than 3K</td>
                                     </tr>
 
                                     <tr>
                                         <th>5</th>
-                                        <td>It's a new release of the <br />ECMA script that works on the<br /> C++-based V8 engine</td>
-                                        <td>C++, C, and JavaScript are used.</td>
+                                        <td>Cons</td>
+                                        <td>Difficult in building <br /> cross-platform apps.
+                                            <br /> Also Not good for SEO.
+                                        </td>
+                                        <td>Strong JSX knowledge <br /> required.
+                                            Frequent updates <br /> of docs.</td>
+                                        <td>Lack of community. <br />
+                                            lack of large scale <br /> projects platform.
+                                        </td>
                                     </tr>
 
                                     <tr className="active">
                                         <th>6</th>
-                                        <td>It's most commonly used on<br /> client-side servers</td>
-                                        <td>It's mainly popular on the<br /> server-side</td>
+                                        <td>Use Cases</td>
+                                        <td>
+                                            Large scale apps. <br />
+                                            Real-Time apps
+                                        </td>
+                                        <td>
+                                            cross-platform apps. <br />
+                                            Exciting functionalities with features.
+                                        </td>
+                                        <td>
+                                            Lightweight apps. <br />
+                                            Intultive apps.
+                                        </td>
                                     </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    {/* 3 */}
-
-
-                    {/* 4 */}
-                    <div className='pt-20 text-start mb-20'>
-                        <h2 className='text-xl text-blue-600 font-semibold'>Q4. How does NodeJS handle multiple requests at the same time?</h2>
-                        <p className="py-6 text-lg">
-                            <span className='text-secondary font-medium'>Answer:</span>
-                            <br />
-                            <br />
-                            <span className='text-purple-500 text-xl font-medium'> NodeJS</span> is an <span className='text-purple-500 text-xl font-medium'>asynchronous event-driven JavaScript runtime  environment </span>  designed
-                            to build scalable network applications.
-                            it's powerfull tool in case of handling requests.
-                            Node is multithreaded. The main event loop is <span className='text-blue-500 text-xl font-medium'>single-threaded</span>  by nature. But the I/O is run on separate threads/processes,
-                            because the I/O APIs in Node. js is asynchronous/non-blocking by design,
-                            in order to accommodate the singlethreaded event loop.
-                            It can process upwards of 1000
-                            requests per second and speed limited only to the speed of
-                            ones network card. A matter of fact that it's 1000 requests per second is not
-                            clients connected simultaneously. It can handle the 10000 simultaneous clients without issue.
-                        </p>
-
-                        <p className="py-6 text-lg">NodeJS receives multiple client requests and
-                            places them into <span className='text-green-500 text-xl font-medium'>EventQueue</span>. It's built with the concept
-                            of event-driven architecture and has its own EventLoop which is an
-                            infinite loop that receives requests and processes them.</p>
-
-                        <p className='py-6 text-lg'>At a high level, Node. js falls into the category of
-                            concurrent computation. <u>This is a direct result of the single-threaded event
-                                loop being the backbone of a Node.js application.</u></p>
                     </div>
                     {/* 4 */}
                 </div>

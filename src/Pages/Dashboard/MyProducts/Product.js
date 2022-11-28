@@ -3,7 +3,7 @@ import { FaArrowRight, FaClock } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
-const Product = ({ product, setDeletingProduct }) => {
+const Product = ({ product, setDeletingProduct, handleHitAdvertise }) => {
     const { _id, category_id, category_name, condition, description, email, img, location, original_price,
         mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = product;
 
@@ -44,9 +44,17 @@ const Product = ({ product, setDeletingProduct }) => {
                 </div>
 
 
-                <div className='flex flex-row justify-between align-middle text-lg mt-6 '>
-                    <button className="btn  btn-primary">Advertise</button>
-                    <label onClick={() => setDeletingProduct(product)} htmlFor="confirmation-modal" className="btn  btn-secondary px-8">Delete</label>
+                <div className='flex flex-col justify-between align-middle text-lg mt-6 '>
+                    {
+                        product.advertise === 'true' &&
+                        <button onClick={() => handleHitAdvertise(product)} className="btn bg-amber-500 border-0 text-white">Stop Advertisement</button>
+
+                    }
+                    {
+                        product.advertise === 'false' &&
+                        <button onClick={() => handleHitAdvertise(product)} className="btn  btn-primary">Advertise</button>
+                    }
+                    <label onClick={() => setDeletingProduct(product)} htmlFor="confirmation-modal" className="btn  btn-secondary px-8 mt-4">Delete</label>
                 </div>
 
                 {/* <div className='mt-4'>

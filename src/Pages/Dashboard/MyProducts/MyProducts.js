@@ -46,6 +46,31 @@ const MyProducts = () => {
             })
     };
 
+    const handleHitAdvertise = product => {
+        const advertiseProductId = product._id;
+        // console.log(product);
+
+        fetch(`http://localhost:5000/products/advertise/${advertiseProductId}?advertise=${product.advertise}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    if (product.advertise === "false") {
+                        toast.success(`${product.product_name} sent to advertisemnet`);
+                    }
+                    else {
+                        toast.success(`${product.product_name} removed from advertisemnet`);
+                    }
+                    refetch();
+                }
+            })
+
+    };
+
 
 
     const closeModal = () => {
@@ -66,6 +91,7 @@ const MyProducts = () => {
                     products.map(product => <Product
                         key={product._id}
                         product={product}
+                        handleHitAdvertise={handleHitAdvertise}
                         setDeletingProduct={setDeletingProduct}></Product>)
                 }
             </div>

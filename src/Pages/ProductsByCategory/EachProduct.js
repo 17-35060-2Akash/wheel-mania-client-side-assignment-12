@@ -3,9 +3,14 @@ import React from 'react';
 import { FaCheckCircle, FaClock, FaPlus, FaUser } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useBuyer from '../../hooks/useBuyer';
+
 
 const EachProduct = ({ product, setProduct, user, addToWishList }) => {
     // const [verification, setVerification] = useState('');
+
+    // const [isBuyer] = useBuyer(user?.email);
+
 
     const { _id, category_id, category_name, condition, description, email, img, location, original_price,
         mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = product;
@@ -61,7 +66,10 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
 
 
                     <div className='flex flex-row justify-between align-middle ' title='Add to Wishlist'>
-                        <button onClick={() => addToWishList(user?.email, product)} className="btn btn-sm bg-cyan-400 text-white border-0 text-lg"><FaPlus></FaPlus></button>
+                        {
+                            // isBuyer &&
+                            <button onClick={() => addToWishList(user?.email, product)} className="btn btn-sm bg-cyan-400 text-white border-0 text-lg"><FaPlus></FaPlus></button>
+                        }
                     </div>
 
                 </div>

@@ -30,12 +30,12 @@ const Login = () => {
 
 
     const handleLogin = data => {
-        console.log(data);
+        // console.log(data);
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 toast.success(`Welcome ${user?.displayName}`);
                 setLoginUserEmail(data.email);
                 reset();

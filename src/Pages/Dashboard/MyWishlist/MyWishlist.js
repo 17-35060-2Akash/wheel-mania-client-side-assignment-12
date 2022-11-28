@@ -5,20 +5,36 @@ import WishListCard from './WishListCard';
 import BookingModal from '../../BookingModal/BookingModal';
 import ConfirmationModal from '../../../components/ConfirmationModal/ConfirmationModal';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 
 const MyWishlist = () => {
     const { user } = useContext(AuthContext);
     const [payement, setPayment] = useState(null);
-    const [wishList, setWishList] = useState([]);
+    // const [wishList, setWishList] = useState([]);
 
     const navigate = useNavigate();
 
+    const { data: wishList = [], isLoading, refetch } = useQuery({
+        queryKey: ['wishlistproducts', user?.email],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/wishlistproducts?user_email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
+            const data = await res.json();
+            return data;
+        }
+    });
 
-    useEffect(() => {
+
+    /* useEffect(() => {
         axios.get(`http://localhost:5000/wishlistproducts?user_email=${user?.email}`)
             .then(data => setWishList(data.data))
-    }, [user?.email]);
+    }, [user?.email, wishList]); */
+
+
 
     const closeModal = () => {
         setPayment(null);

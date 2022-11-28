@@ -25,8 +25,9 @@ const MyWishlist = () => {
     };
 
     const handlePayement = item => {
-        console.log(item.product._id);
-        // navigate(`/dashboard/payment/${order._id}`)
+        // console.log(item)
+        // console.log(item.product._id);
+        navigate(`/dashboard/payment/${item.product._id}`)
     };
 
     return (
@@ -45,7 +46,7 @@ const MyWishlist = () => {
             {
                 payement && <ConfirmationModal
                     title={`Ready for payment?`}
-                    message={`Want to proceed to playment for ${payement.product_name}?`}
+                    message={`Want to proceed to playment for ${payement.product.product_name}?`}
                     closeModal={closeModal}
                     successAction={handlePayement}
                     modalData={payement}

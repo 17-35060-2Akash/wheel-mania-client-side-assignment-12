@@ -8,8 +8,6 @@ const WishListCard = ({ item, setPayment, user }) => {
     const { _id, category_id, category_name, condition, description, email, img, location, original_price,
         mobile, posted_date, posted_time, product_name, resale_price, resale_status, seller_name, usage } = item.product;
 
-    console.log(item.product);
-
 
     const { data: seller = {}, refetch } = useQuery({
         queryKey: ['seller', email],
@@ -97,7 +95,7 @@ const WishListCard = ({ item, setPayment, user }) => {
                 <div className='flex flex-row justify-between align-middle text-lg mt-6 '>
                     <label
                         onClick={() => setPayment(item)}
-                        htmlFor="booking-modal" className="btn  btn-secondary w-full text-white">Pay</label>
+                        htmlFor="confirmation-modal" className="btn  btn-secondary w-full text-white">Pay</label>
                 </div>
 
 

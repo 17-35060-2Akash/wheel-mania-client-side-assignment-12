@@ -22,7 +22,7 @@ const CheckOutForm = ({ order }) => {
     const [clientSecret, setClientSecret] = useState("");
 
     /*  useEffect(() => {
-         fetch("http://localhost:5000/create-payment-intent", {
+         fetch("https://wheel-mania-server.vercel.app/create-payment-intent", {
              method: "POST",
              headers: {
                  "Content-Type": "application/json"

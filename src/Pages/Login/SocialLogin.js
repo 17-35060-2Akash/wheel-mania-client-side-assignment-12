@@ -29,7 +29,7 @@ const SocialLogin = () => {
                 console.log(user);
 
                 saveUser(user.displayName, user.email);
-                setCreatedGoogleEmail(user.email);
+
             })
             .catch(error => console.error(error));
     };
@@ -42,7 +42,7 @@ const SocialLogin = () => {
             verification: 'N/A'
         };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://wheel-mania-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,6 +54,8 @@ const SocialLogin = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     //
+                    // console.log(data)
+                    setCreatedGoogleEmail(email);
                 }
             })
     };

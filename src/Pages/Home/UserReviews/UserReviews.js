@@ -33,7 +33,7 @@ const UserReviews = () => {
         },
     ]
     return (
-        <section className='my-16'>
+        <section className='my-16 px-10'>
             <div className='flex justify-between'>
                 <div className='mb-16 mx-auto'>
                     <h1 className='text-3xl md:text-5xl font-lighter text-center text-cyan-500 my-20' >What People Are Saying</h1>

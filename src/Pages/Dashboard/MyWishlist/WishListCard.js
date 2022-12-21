@@ -12,7 +12,7 @@ const WishListCard = ({ item, setPayment, user }) => {
     const { data: seller = {}, refetch } = useQuery({
         queryKey: ['seller', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/seller?email=${email}`);
+            const res = await fetch(`https://wheel-mania-server.vercel.app/users/seller?email=${email}`);
             const data = await res.json();
             return data;
         }

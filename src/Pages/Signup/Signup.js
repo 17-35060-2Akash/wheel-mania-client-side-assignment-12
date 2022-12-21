@@ -46,7 +46,7 @@ const Signup = () => {
                     .then(() => {
 
                         saveUser(data.name, data.email, data.accountType);
-                        setCreatedUserEmail(data.email);
+                        // setCreatedUserEmail(data.email);
                         reset();
 
                     })
@@ -74,7 +74,7 @@ const Signup = () => {
             user['verification'] = 'N/A';
         }
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://wheel-mania-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -85,7 +85,7 @@ const Signup = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    // setCreatedUserEmail(email);
+                    setCreatedUserEmail(email);
                 }
 
             })
@@ -108,7 +108,7 @@ const Signup = () => {
 
     return (
         <div className='h-[800px] flex justify-center items-center my-24'>
-            <div className='w-96 p-7 shadow-lg rounded-xl'>
+            <div className='w-96 p-7 md:shadow-lg rounded-xl'>
                 <h2 className='text-2xl text-center font-lighter mb-9 text-primary'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
 

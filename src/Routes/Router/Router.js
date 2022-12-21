@@ -13,6 +13,7 @@ import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Blog from "../../Pages/Others/Blog/Blog";
+import Contact from "../../Pages/Others/Contact/Contact";
 import NotFound from "../../Pages/Others/NotFound/NotFound";
 import ProductsByCategory from "../../Pages/ProductsByCategory/ProductsByCategory";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
                     <PrivateRoute>
                         <ProductsByCategory></ProductsByCategory>
                     </PrivateRoute>,
-                loader: async ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: async ({ params }) => fetch(`https://wheel-mania-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/login',
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             },
         ]
     },
@@ -126,7 +131,7 @@ export const router = createBrowserRouter([
                 path: '/dashboard/payment/:id',
                 element:
                     <Payment></Payment>,
-                loader: async ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
+                loader: async ({ params }) => fetch(`https://wheel-mania-server.vercel.app/orders/${params.id}`)
             },
         ]
     },

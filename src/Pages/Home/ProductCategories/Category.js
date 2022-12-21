@@ -1,11 +1,12 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import './ProductCategories.css';
 
 const Category = ({ category }) => {
     const { _id, name, image, logo } = category;
     return (
-        <div>
+        <div className='each-category'>
             <Link to={`/category/${_id}`}>
                 <div className="card bg-base-100 shadow-xl image-full">
                     <figure><img src={image} alt="Shoes" /></figure>

@@ -1,0 +1,9 @@
+.each-category:hover {
+    transform: scale(1.07);
+    transition: transform 2s ease-out;
+}
+
+.slide-button:hover {
+    transform: scale(1.1);
+    font-weight: 700;
+}

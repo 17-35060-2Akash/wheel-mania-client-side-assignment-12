@@ -15,7 +15,7 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/sellers?email=${user?.email}`, {
+            const res = await fetch(`https://wheel-mania-server.vercel.app/users/sellers?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -28,7 +28,7 @@ const AllSellers = () => {
 
 
     const handleVerifySeller = (id) => {
-        fetch(`http://localhost:5000/users/verify/${id}`, {
+        fetch(`https://wheel-mania-server.vercel.app/users/verify/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -52,7 +52,7 @@ const AllSellers = () => {
     };
 
     const handleDeleteSeller = seller => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://wheel-mania-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

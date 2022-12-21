@@ -24,7 +24,7 @@ const ProductsByCategory = () => {
         }
         // console.log(wishListProduct);
 
-        fetch('http://localhost:5000/wishlistproducts', {
+        fetch('https://wheel-mania-server.vercel.app/wishlistproducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

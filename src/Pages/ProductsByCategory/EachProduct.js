@@ -19,7 +19,7 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
     const { data: seller = {}, refetch } = useQuery({
         queryKey: ['seller', email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/seller?email=${email}`);
+            const res = await fetch(`https://wheel-mania-server.vercel.app/users/seller?email=${email}`);
             const data = await res.json();
             return data;
         }
@@ -29,7 +29,7 @@ const EachProduct = ({ product, setProduct, user, addToWishList }) => {
 
 
 
-    /* fetch(`http://localhost:5000/users/seller?email=${email}`)
+    /* fetch(`https://wheel-mania-server.vercel.app/users/seller?email=${email}`)
         .then(res => res.json())
         .then(data => {
             setVerification(data.verification);

@@ -22,7 +22,7 @@ const AddProduct = () => {
     const { data: categories = [], isLoading, refetch } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://wheel-mania-server.vercel.app/categories');
             const data = await res.json();
             return data;
         }
@@ -85,7 +85,7 @@ const AddProduct = () => {
                     // console.log(carInfo);
 
                     //save product info to the db
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://wheel-mania-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

@@ -15,22 +15,23 @@ const Navbar = () => {
 
     const menuItems =
         <React.Fragment>
-            <li><Link to='/'>Home</Link></li>
+            <li className='mx-2 hover:text-primary'><Link to='/'>Home</Link></li>
             {
                 user?.uid &&
-                <li><Link to='/dashboard'>Dashboard</Link></li>
+                <li className='mx-2 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>
 
             }
 
-            <li><Link to='/blog'>Blogs</Link></li>
+            <li className='mx-2 hover:text-primary'><Link to='/blog'>Blogs</Link></li>
+            <li className='mx-2 hover:text-primary'><Link to='/contact'>Contact</Link></li>
 
             {
                 user?.uid ?
                     <React.Fragment>
-                        <li><button onClick={handleLogOut} className='btn btn-ghost hover:btn-error hover:rounded-lg font-semibold'>Sign Out</button></li>
+                        <li className='mx-2 '><button onClick={handleLogOut} className='btn btn-ghost hover:btn-error hover:rounded-lg font-semibold'>Sign Out</button></li>
                     </React.Fragment>
                     :
-                    <li><Link to='/login'>Login</Link></li>
+                    <li className='mx-2 hover:text-secondary'><Link to='/login'>Login</Link></li>
             }
         </React.Fragment>;
 
@@ -52,22 +53,24 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
+                <ul className="menu menu-horizontal p-0 uppercase ">
                     {menuItems}
                 </ul>
             </div>
             <div className="navbar-end pr-1 md:pr-4 text-sm md:text-xl font-semibold">
                 {user?.displayName ?
 
-                    <h3>Hi, <span className='text-primary'>{user?.displayName}</span> </h3>
+                    <h3>Hi, <span className='text-primary uppercase'> {user?.displayName}</span> </h3>
                     : ''
 
                 }
 
             </div>
-            <label htmlFor="dashboarddrawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </label>
+            {
+                user && <label htmlFor="dashboarddrawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
+            }
         </div>
     );
 };

@@ -31,8 +31,8 @@ const DashboardLayout = () => {
                         {
                             isBuyer &&
                             <React.Fragment>
-                                <li><Link to='/dashboard/myorders'>My Orders</Link></li>
-                                <li><Link to='/dashboard/mywishlist'>My WishList</Link></li>
+                                <li className='bg-white py-1 rounded-t-xl'> <Link to='/dashboard/myorders'>My Orders</Link></li>
+                                <li className='bg-white py-1 rounded-b-xl'> <Link to='/dashboard/mywishlist'>My WishList</Link></li>
                             </React.Fragment>
 
                         }
@@ -41,8 +41,8 @@ const DashboardLayout = () => {
                         {
                             isSeller &&
                             <React.Fragment>
-                                <li><Link to='/dashboard/addproduct'>Add a Product</Link></li>
-                                <li><Link to='/dashboard/myproducts'>My Products</Link></li>
+                                <li className='bg-white py-1 rounded-t-xl'> <Link to='/dashboard/addproduct'>Add a Product</Link></li>
+                                <li className='bg-white py-1 rounded-b-xl'> <Link to='/dashboard/myproducts'>My Products</Link></li>
                             </React.Fragment>
 
                         }
@@ -52,9 +52,9 @@ const DashboardLayout = () => {
                         {
                             isAdmin &&
                             <React.Fragment>
-                                <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-                                <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
-                                <li><Link to='/dashboard/reportedItems'>Reported Items</Link></li>
+                                <li className='bg-white py-1 rounded-t-xl'> <Link to='/dashboard/allsellers'>All Sellers</Link></li>
+                                <li className='bg-white py-1'> <Link to='/dashboard/allbuyers'>All Buyers</Link></li>
+                                <li className='bg-white py-1 rounded-b-xl'> <Link to='/dashboard/reportedItems'>Reported Items</Link></li>
                             </React.Fragment>
 
                         }

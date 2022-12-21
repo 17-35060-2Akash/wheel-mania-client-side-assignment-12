@@ -20,7 +20,7 @@ const MyWishlist = () => {
     const { data: wishList = [], isLoading, refetch } = useQuery({
         queryKey: ['wishlistproducts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishlistproducts?user_email=${user?.email}`, {
+            const res = await fetch(`https://wheel-mania-server.vercel.app/wishlistproducts?user_email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -32,7 +32,7 @@ const MyWishlist = () => {
 
 
     /* useEffect(() => {
-        axios.get(`http://localhost:5000/wishlistproducts?user_email=${user?.email}`)
+        axios.get(`https://wheel-mania-server.vercel.app/wishlistproducts?user_email=${user?.email}`)
             .then(data => setWishList(data.data))
     }, [user?.email, wishList]); */
 

@@ -7,7 +7,7 @@ const AdvertisedItems = () => {
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['advertisements'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertisements');
+            const res = await fetch('https://wheel-mania-server.vercel.app/advertisements');
             const data = await res.json();
             return data;
         }

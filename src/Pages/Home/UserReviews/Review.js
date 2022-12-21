@@ -5,7 +5,7 @@ import quote from '../../../assets/icons/quote.svg';
 const Review = ({ datareview }) => {
     const { name, img, review, location } = datareview;
     return (
-        <div className="card  bg-base-100 shadow-xl card glass">
+        <div className="card each-category bg-base-100 shadow-xl glass">
             <div className="card-body">
                 <figure>
                     <img src={quote} alt="" className='w-20 lg:w-20' />

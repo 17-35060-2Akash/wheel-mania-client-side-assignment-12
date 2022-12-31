@@ -15,23 +15,23 @@ const Navbar = () => {
 
     const menuItems =
         <React.Fragment>
-            <li className='mx-2 hover:text-primary'><Link to='/'>Home</Link></li>
+            <li className='mx-4 text-gray-500 hover:text-primary'><Link to='/'>Home</Link></li>
             {
                 user?.uid &&
-                <li className='mx-2 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>
+                <li className='mx-4 text-gray-500 hover:text-primary'><Link to='/dashboard'>Dashboard</Link></li>
 
             }
 
-            <li className='mx-2 hover:text-primary'><Link to='/blog'>Blogs</Link></li>
-            <li className='mx-2 hover:text-primary'><Link to='/contact'>Contact</Link></li>
+            <li className='mx-4 text-gray-500 hover:text-primary'><Link to='/blog'>Blogs</Link></li>
+            <li className='mx-4 text-gray-500 hover:text-primary'><Link to='/contact'>Contact</Link></li>
 
             {
                 user?.uid ?
                     <React.Fragment>
-                        <li className='mx-2 '><button onClick={handleLogOut} className='btn btn-ghost hover:btn-error hover:rounded-lg font-semibold'>Sign Out</button></li>
+                        <li className='mx-4 text-gray-500 '><button onClick={handleLogOut} className='btn btn-ghost hover:btn-error hover:rounded-lg font-semibold'>Sign Out</button></li>
                     </React.Fragment>
                     :
-                    <li className='mx-2 hover:text-secondary'><Link to='/login'>Login</Link></li>
+                    <li className='mx-4 text-gray-500 hover:text-secondary ont-semibold'><Link to='/login'>Login</Link></li>
             }
         </React.Fragment>;
 
@@ -53,7 +53,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0 uppercase ">
+                <ul className="menu menu-horizontal p-0 uppercase font-semibold">
                     {menuItems}
                 </ul>
             </div>

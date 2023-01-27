@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+## Project Name: 
+Wheel Mania, an website which offers Second Hand cars to the customers and help sellers to get their cars sold.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+##Live site Link(Firebase):
+https://wheel-mania.web.app
 
-In the project directory, you can run:
+##Client Public Repo Link:
+https://github.com/17-35060-2Akash/wheel-mania-client-side-assignment-12
 
-### `npm start`
+##Server Public Repo Link:
+https://github.com/17-35060-2Akash/wheel-mania-server-side-assignment-12
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Description:
+Here is an website named Wheel Mania. It's a react application which is designed to offer Second hand cars for resale to the differentiated 
+users categorized as Buyers and sellers. There's also a third category which is the admin. The three experience different feel from Wheel Mania Resellers.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#common parts:
+A navbar which is always in the top and the footer which is at the bottom of the page are common always. 
+For Smaller screens when you toggle the navbar toggler it opens a side panel from the left. Moreover you can see the conditional toggling 
+between Login vs Dashboard and Sign out. If you login you can see the username in the navbar corner.
+ 
+#Home Page:
+Everyone is allowed to see Home. first we'll encounter the main home where you can see some introductory sections along with the car categories. There's an advertisement section as well
+but the section depends on if a seller advertises his/her product or not. Each car category can redirected you to Wheel Mania listings by catergory if you login.
 
-### `npm run build`
+##Dashboard:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#When a Buyer logs in and goes to the Dashboard he can see:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+My Orders where he can see products from the categories he selected,and 
+My Wishlist showing his wishlist. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#When a Seller logs in and goes to the Dashboard he can see:
 
-### `npm run eject`
+Add a Product where he can add his own listing and when he is done he'll get redirected to My Products page,
+where he can see what he'as added.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#When an Admin logs in and goes to the Dashboard he can see:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All Sellers and All Buyers page where he can delete one user if he has the access and 
+verifying a seller. If sellers are verified there will show a blue tick a aside of their names.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+#Login, Logout and Sign Up: 
+The login page has two types of login options. Email password based and google login.
+The signup page'll take you to the home. They are both secured properly.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#Other pages:
+There are a Blog, Display error and an Not Found Page.
 
-### Code Splitting
+Features implemented:
+Structure and logic: React, js, react router, nodeexpress, mongodb etc.
+Security: Firebase Authentication and JWT Authorization.
+Beauty: tailwind Css, daisyUI, react icons, sweetalert, react hot toast, stripe etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+##API links:
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://wheel-mania-server.vercel.app
